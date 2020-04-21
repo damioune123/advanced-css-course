@@ -7,26 +7,32 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    /* this allows to include element padding and margin in the total height/width of an element */
-    box-sizing: border-box;
+    /* better practice than just setting it to border-box here as setting, easier for plugin, ... that needs other behavior than border-box*/
+    box-sizing: inherit;
+}
+html {
+    font-size: 62.5%;
 }
 body {
     /* fonts params always in the body selector */
     font-family: "Lato", sans-serif ;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.7;
     color: #777777;
-
+    padding: 3rem;
+    /* this allows to include element padding and margin in the total height/width of an element */
+    box-sizing: border-box;
 }
 
 .header {
     /* vh for viewport height => responsive */
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, .8), rgba(40, 180, 133, .8)), url("../img/hero.jpg");
     /* cover the entire container */
     background-size: cover;
     /* when viewport is reduced, make sure the top stays intact (the bottom is cropped)*/
@@ -34,17 +40,17 @@ body {
     clip-path: polygon(0 0, 100% 0,100% 75vh, 0 100%);
     position: relative;
 }
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -56,36 +62,36 @@ body {
     color: #ffffff;
     text-transform: uppercase;
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     animation: moveInLeft 1s ease-out;
 }
 
 .heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.74rem;
     animation: moveInRight 1s ease-out;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-.3rem);
     box-shadow: 0 10px 20px rgba(0,0,0, .2);
 }
 
 .btn:active {
-    transform: translateY(-1px);
+    transform: translateY(-.1rem);
     box-shadow: 0 10px 10px rgba(0,0,0, .2);
 }
 
-.btn-white{
+.btn--white{
     background-color: #ffffff;
     color: #777777;
 }
@@ -94,11 +100,12 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     position: relative;
+    font-size: 1.6rem;
 }
 /* This allow to put a same button under the main button that will allow to do do the scale animation */
 .btn::after {
@@ -106,7 +113,7 @@ body {
     height: 100%;
     width: 100%;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* putting the ::after button behind the main, do not forget to put the main button position to relative */
     position: absolute;
     top: 0;
@@ -120,11 +127,11 @@ body {
     opacity: 0;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #ffffff;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     /* in order for the button not to show up before animation - as it is delayed (initail state is animationm 0 % state) */
     animation-fill-mode: backwards;
@@ -133,10 +140,10 @@ body {
 @keyframes moveInLeft {
     0%{
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
     80%{
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
     100%{
         opacity: 1;
@@ -146,10 +153,10 @@ body {
 @keyframes moveInRight {
     0%{
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
     80%{
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
     100%{
         opacity: 1;
@@ -160,7 +167,7 @@ body {
 @keyframes moveInBottom {
     0%{
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100%{
