@@ -6,3 +6,165 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+* {
+    margin: 0;
+    padding: 0;
+    /* this allows to include element padding and margin in the total height/width of an element */
+    box-sizing: border-box;
+}
+body {
+    /* fonts params always in the body selector */
+    font-family: "Lato", sans-serif ;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777777;
+
+}
+
+.header {
+    /* vh for viewport height => responsive */
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+    /* cover the entire container */
+    background-size: cover;
+    /* when viewport is reduced, make sure the top stays intact (the bottom is cropped)*/
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0,100% 75vh, 0 100%);
+    position: relative;
+}
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary{
+    color: #ffffff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+}
+
+.heading-primary--main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation: moveInLeft 1s ease-out;
+}
+
+.heading-primary--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0, .2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 10px rgba(0,0,0, .2);
+}
+
+.btn-white{
+    background-color: #ffffff;
+    color: #777777;
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+/* This allow to put a same button under the main button that will allow to do do the scale animation */
+.btn::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    border-radius: 100px;
+    /* putting the ::after button behind the main, do not forget to put the main button position to relative */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* in order to do animation on hover */
+    transition: all .4s;
+}
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-white::after {
+    background-color: #ffffff;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* in order for the button not to show up before animation - as it is delayed (initail state is animationm 0 % state) */
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80%{
+        transform: translateX(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80%{
+        transform: translateX(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
