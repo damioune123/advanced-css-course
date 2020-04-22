@@ -1,0 +1,55 @@
+.btn {
+  &:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 10px 20px rgba($color-black, .2);
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-.1rem);
+    box-shadow: 0 10px 10px rgba($color-black, .2);
+  }
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem;
+  }
+  /* This allow to put a same button under the main button that will allow to do do the scale animation */
+  &::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    border-radius: 10rem;
+    /* putting the ::after button behind the main, do not forget to put the main button position to relative */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* in order to do animation on hover */
+    transition: all .4s;
+  }
+
+
+  &--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* in order for the button not to show up before animation - as it is delayed (initail state is animationm 0 % state) */
+    animation-fill-mode: backwards;
+  }
+  &--white{
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+}

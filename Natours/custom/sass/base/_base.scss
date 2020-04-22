@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* better practice than just setting it to border-box here as setting, easier for plugin, ... that needs other behavior than border-box*/
+  box-sizing: inherit;
+}
+html {
+  //This defines what 1 rem is
+  font-size: 62.5%;
+}
+body {
+  /* this allows to include element padding and margin in the total height/width of an element */
+  box-sizing: border-box;
+}
