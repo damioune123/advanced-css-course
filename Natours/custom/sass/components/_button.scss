@@ -21,7 +21,7 @@
     border-radius: 10rem;
     transition: all .2s;
     position: relative;
-    font-size: 1.6rem;
+    font-size: $default-font-size;
   }
   /* This allow to put a same button under the main button that will allow to do do the scale animation */
   &::after {
@@ -51,5 +51,31 @@
     &::after {
       background-color: $color-white;
     }
+  }
+}
+
+.btn-text {
+
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: .1rem solid $color-primary;
+    padding: .3rem;
+    transition: all .2s;
+  }
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-primary;
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    transform: translateY(-.2rem);
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translate(0);
   }
 }
